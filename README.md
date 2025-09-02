@@ -1,1 +1,1 @@
-# web-project-af
+We are creating a event booking website for our web development project.

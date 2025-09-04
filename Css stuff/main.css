@@ -1,0 +1,120 @@
+body {
+    background-color: #181818;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #232323;
+    border-radius: 20px;
+    width: 60%;
+    margin: 30px auto 0 auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    padding: 10px 0;
+    border: 2px solid #16d640; 
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    margin: 0 25px;
+}
+
+.navbar a {
+    color: #f1f1f1;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 8px 16px;
+    border-radius: 12px;
+    transition: background 0.2s;
+}
+
+.navbar a:hover {
+    background-color: #16d640;
+}
+
+
+.button-exploreevents {
+  width: 110px;
+  height: 40px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: rgb(161, 255, 20);
+  border-radius: 30px;
+  color: rgb(19, 19, 19);
+  font-weight: 600;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  transition-duration: .2s;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.116);
+  padding-left: 8px;
+  transition-duration: .5s;
+}
+
+.button-exploreevents:hover {
+  background-color: #16d640;
+}
+
+.svgIcon {
+  height: 25px;
+  transition-duration: 1.5s;
+}
+
+.bell path {
+  fill: rgb(19, 19, 19);
+}
+
+.button-.button-exploreevents {
+  background-color: rgb(192, 255, 20);
+  transition-duration: .5s;
+}
+
+.button-exploreevents:active {
+  transform: scale(0.97);
+  transition-duration: .2s;
+}
+
+.button-exploreevents:hover .svgIcon {
+  transform: rotate(250deg);
+  transition-duration: 1.5s;
+}
+
+a {
+  text-decoration: none;
+}
+
+.button-backtohome {
+    width: 110px;
+    height: 40px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #16d640;
+    border-radius: 30px;
+    color: rgb(19, 19, 19);
+    font-weight: 600;
+    border: 2px solid #16d640;
+    position: relative;
+    cursor: pointer;
+    transition-duration: .2s;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.116);
+    padding-left: 8px;
+    transition-duration: .5s;
+}
+
+.button-backtohome:hover {
+    background-color: #16d640;
+    box-shadow: 0 0 15px 3px #16d640;
+}

@@ -20,7 +20,7 @@
     <p style="text-align: center; color: white;">Discover upcoming events and activities happening around you.</p>
     <br>
     <div style="text-align: center;">
-        <a href="main.html"><button class="button-backtohome">Back to Home</button></a>
+        <a href="homepage.php"><button class="button-backtohome">Back to Home</button></a>
     </div>
 </body>
 </html>

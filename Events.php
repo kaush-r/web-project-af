@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,22 +6,13 @@
     <title>Events</title>
 </head>
 <body>
-    <div class="navbar">
-        <nav>
-            <ul>
-                <li><a href="homepage.php">Home</a></li>
-                <li><a href="Events.php">Events</a></li>
-                <li><a href="Dashboard.php">Dashboard</a></li>
-                <li><a href="about.php">About</a></li>
-            </ul>
-        </nav>
-    </div>
+    <?php include 'header.php'; ?>
     <br>
     <h1 style="text-align: center; color: #FFD700;">Events Page</h1>
     <p style="text-align: center; color: white;">Discover upcoming events and activities happening around you.</p>
     <br>
     <div style="text-align: center;">
-        <a href="homepage.php"><button class="button-backtohome">Back to Home</button></a>
+        <a href="index.php"><button class="button-backtohome">Back to Home</button></a>
     </div>
     <div style="display: flex; justify-content: center; margin-top: 40px;">
         <div class="card">

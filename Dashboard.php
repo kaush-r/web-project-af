@@ -6,17 +6,7 @@
     <title>User Dashboard</title>
 </head>
 <body>
-    <div class="navbar">
-        <nav>
-            <ul>
-                <li><a href="homepage.php">Home</a></li>
-                <li><a href="Events.php">Events</a></li>
-                <li><a href="Dashboard.php">Dashboard</a></li>
-                <li><a href="about.php">About</a></li>
-
-            </ul>
-        </nav>
-    </div>
+    <?php include 'header.php'; ?>
     <br>
     <h1 style="text-align: center; color: #FFD700;">User Dashboard</h1>
     <p style="text-align: center; color: white;">View and manage your booked events below.</p>

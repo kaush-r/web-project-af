@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="Css/main.css">
+    <link rel="stylesheet" href="css/main.css">
     <title>Event watch</title>
 </head>
 <body>

@@ -1,4 +1,4 @@
-
+<script src="assets/scripts.js"></script>
 <footer id="main-footer">
     <div class="footer-content">
     </div>
@@ -6,3 +6,5 @@
         Event Watch
     </div>
 </footer>
+</body>
+</html>

@@ -10,13 +10,14 @@
             <ul>
                 <li><a href="homepage.php">Home</a></li>
                 <li><a href="events.php">Events</a></li>
+                <li><a href="Dashboard.php">Dashboard</a></li>
                 <li><a href="about.php">About</a></li>
-                <li><a href="contact.php">Contact</a></li>
+                
             </ul>
         </nav>
     </div>
     <br>
-    <h1 style="text-align: center; color: #16d640;">Welcome to Event Watch</h1>
+    <h1 style="text-align: center; color: #FFD700;">Welcome to Event Watch</h1>
     <p style="text-align: center; color: white;">Your go-to platform for discovering and tracking events around you.</p>
     <br>
     

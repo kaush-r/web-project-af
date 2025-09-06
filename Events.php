@@ -10,13 +10,13 @@
             <ul>
                 <li><a href="homepage.php">Home</a></li>
                 <li><a href="Events.php">Events</a></li>
+                <li><a href="Dashboard.php">Dashboard</a></li>
                 <li><a href="about.php">About</a></li>
-                <li><a href="contact.php">Contact</a></li>
             </ul>
         </nav>
     </div>
     <br>
-    <h1 style="text-align: center; color: #16d640;">Events Page</h1>
+    <h1 style="text-align: center; color: #FFD700;">Events Page</h1>
     <p style="text-align: center; color: white;">Discover upcoming events and activities happening around you.</p>
     <br>
     <div style="text-align: center;">
@@ -46,7 +46,7 @@
         </div>
     </div>
     <script>
-        // Show "Book Now" button if any checkbox is checked
+        // script to show book button
         const checkboxes = document.querySelectorAll('.event-checkbox');
         const bookBtn = document.getElementById('book-now-btn');
         checkboxes.forEach(cb => {

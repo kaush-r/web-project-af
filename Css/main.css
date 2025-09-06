@@ -137,7 +137,7 @@ a {
 }
 
 .card {
-    width: 400px;
+    width: 600px;
     border-radius: 30px;
     background: #232323;
     box-shadow: 0 0 10px 4px #FFD700,
@@ -208,8 +208,26 @@ a {
         align-items: center;
     }
     .card {
-        width: 95vw;
+        width: 98vw;
         min-width: unset;
-        max-width: 400px;
+        max-width: 98vw;
     }
+}
+
+
+.event-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.4s;
+    padding: 0 16px;
+    background: #232323;
+    color: #FFD700;
+    border-radius: 0 0 16px 16px;
+    font-size: 0.98em;
+}
+
+.event-details.open {
+    max-height: 120px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
 }

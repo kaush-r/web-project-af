@@ -38,5 +38,6 @@
             </button>
         </a>
     </div>
+    <?php include 'footer.php'; ?>
 </body>
 </html>

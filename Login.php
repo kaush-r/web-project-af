@@ -27,5 +27,6 @@
         <span style="color: aliceblue;">Don't have an account? <a href="signup.php">Sign up</a></span>
     </div>
     <script src="scripts.js"></script>
+    <?php include 'footer.php'; ?>
 </body>
 </html>

@@ -1,3 +1,13 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 body {
     background-color: #181818;
     margin: 0;
@@ -339,4 +349,30 @@ a {
     display: flex;
     justify-content: flex-end;
     margin-top: 20px;
+}
+
+#main-footer {
+    background: #232323;
+    color: #FFD700;
+    padding: 40px 0 10px 0;
+    text-align: center;
+    border-top: 2px solid #FFD700;
+    margin-top: auto;
+    position: relative;
+    width: 100%;
+}
+
+.footer-content {
+    color: #f1f1f1;
+    font-size: 1.1em;
+    margin-bottom: 18px;
+}
+
+.footer-bottom {
+    color: #FFD700;
+    font-weight: bold;
+    font-size: 1.2em;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    opacity: 0.95;
 }

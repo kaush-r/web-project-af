@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,13 +42,6 @@
             </div>
         </div>
     </div>
-    <script>
-        //script to remove events
-        document.querySelectorAll('.cancel-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                this.closest('.booked-event').remove();
-            });
-        });
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>

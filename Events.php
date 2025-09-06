@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,24 +51,6 @@
             <button id="book-now-btn" style="display:none; margin-top: 25px;" class="button-exploreevents">Book Now</button>
         </div>
     </div>
-    <script>
-        // Reveals Book Now button to the world
-        const checkboxes = document.querySelectorAll('.event-checkbox');
-        const bookBtn = document.getElementById('book-now-btn');
-        checkboxes.forEach(cb => {
-            cb.addEventListener('change', () => {
-                const anyChecked = Array.from(checkboxes).some(c => c.checked);
-                bookBtn.style.display = anyChecked ? 'block' : 'none';
-
-                // expanding event details
-                const details = cb.closest('li').querySelector('.event-details');
-                if(cb.checked) {
-                    details.classList.add('open');
-                } else {
-                    details.classList.remove('open');
-                }
-            });
-        });
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>

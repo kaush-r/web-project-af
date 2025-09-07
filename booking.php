@@ -16,11 +16,12 @@ $selected_events = isset($_SESSION['selected_events']) ? $_SESSION['selected_eve
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $user_id && !empty($selected_events)) {
     $success = true;
     foreach ($selected_events as $event_id) {
-        // Insert booking record (assuming a bookings table: user_id, event_id)
-        $sql = "INSERT INTO bookings (user_id, event_id) VALUES (?, ?)";
+        $seats = isset($_POST['seats'][$event_id]) ? intval($_POST['seats'][$event_id]) : 1;
+        $booking_date = date('Y-m-d H:i:s');
+        $sql = "INSERT INTO bookings (user_id, event_id, booking_date, seats) VALUES (?, ?, ?, ?)";
         $stmt = mysqli_prepare($connection, $sql);
         if ($stmt) {
-            mysqli_stmt_bind_param($stmt, 'ii', $user_id, $event_id);
+            mysqli_stmt_bind_param($stmt, 'iisi', $user_id, $event_id, $booking_date, $seats);
             if (!mysqli_stmt_execute($stmt)) {
                 $success = false;
             }
@@ -31,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $user_id && !empty($selected_events
     }
     if ($success) {
         echo '<div style="text-align:center;color:green;">Booking successful!</div>';
-        // Optionally clear selected events
         unset($_SESSION['selected_events']);
     } else {
         echo '<div style="text-align:center;color:red;">Booking failed. Please try again.</div>';
@@ -51,13 +51,15 @@ if (!$user_id) {
     if ($result && mysqli_num_rows($result) > 0) {
         echo '<form method="post" style="text-align:center;">';
         echo '<table style="margin:0 auto; border-collapse:collapse;">';
-        echo '<tr style="background:#FFD700;color:#222;"><th>Event</th><th>Venue</th><th>Date</th><th>Price</th></tr>';
+        echo '<tr style="background:#FFD700;color:#222;"><th>Event</th><th>Venue</th><th>Date</th><th>Price</th><th>Seats</th></tr>';
         while ($row = mysqli_fetch_assoc($result)) {
+            $event_id = $row['id'];
             echo '<tr style="background:#222;color:#FFD700;">';
             echo '<td>' . htmlspecialchars($row['title']) . '</td>';
             echo '<td>' . htmlspecialchars($row['venue']) . '</td>';
             echo '<td>' . htmlspecialchars(date('Y-m-d H:i', strtotime($row['event_date']))) . '</td>';
             echo '<td>Rs. ' . htmlspecialchars($row['price']) . '</td>';
+            echo '<td><input type="number" name="seats[' . $event_id . ']" value="1" min="1" max="10" style="width:60px;"></td>';
             echo '</tr>';
         }
         echo '</table>';

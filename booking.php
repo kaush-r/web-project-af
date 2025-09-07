@@ -1,17 +1,73 @@
 <?php
+// Start session if not started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 $pageTitle = 'Booking';
 include 'header.php';
 include 'db_connect.php';
-?>
 
-<br>
+// Get selected event IDs from session (set from Events page)
+$selected_events = isset($_SESSION['selected_events']) ? $_SESSION['selected_events'] : [];
 
-<h1 style="text-align: center; color: #FFD700;">Booking Page</h1>
+// Handle booking form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $user_id && !empty($selected_events)) {
+    $success = true;
+    foreach ($selected_events as $event_id) {
+        // Insert booking record (assuming a bookings table: user_id, event_id)
+        $sql = "INSERT INTO bookings (user_id, event_id) VALUES (?, ?)";
+        $stmt = mysqli_prepare($connection, $sql);
+        if ($stmt) {
+            mysqli_stmt_bind_param($stmt, 'ii', $user_id, $event_id);
+            if (!mysqli_stmt_execute($stmt)) {
+                $success = false;
+            }
+            mysqli_stmt_close($stmt);
+        } else {
+            $success = false;
+        }
+    }
+    if ($success) {
+        echo '<div style="text-align:center;color:green;">Booking successful!</div>';
+        // Optionally clear selected events
+        unset($_SESSION['selected_events']);
+    } else {
+        echo '<div style="text-align:center;color:red;">Booking failed. Please try again.</div>';
+    }
+}
 
-<div style="text-align: center;">
-    <a href="index.php"><button class="button-backtohome">Back to Home</button></a>
-</div>
+echo '<br><h1 style="text-align: center; color: #FFD700;">Booking Page</h1>';
 
-<?php
+if (!$user_id) {
+    echo '<div style="text-align:center;color:red;">You must be logged in to book events.</div>';
+} elseif (empty($selected_events)) {
+    echo '<div style="text-align:center;color:orange;">No events selected for booking.</div>';
+} else {
+    // Fetch event details
+    $ids = implode(',', array_map('intval', $selected_events));
+    $result = mysqli_query($connection, "SELECT id, title, venue, event_date, price FROM events WHERE id IN ($ids)");
+    if ($result && mysqli_num_rows($result) > 0) {
+        echo '<form method="post" style="text-align:center;">';
+        echo '<table style="margin:0 auto; border-collapse:collapse;">';
+        echo '<tr style="background:#FFD700;color:#222;"><th>Event</th><th>Venue</th><th>Date</th><th>Price</th></tr>';
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '<tr style="background:#222;color:#FFD700;">';
+            echo '<td>' . htmlspecialchars($row['title']) . '</td>';
+            echo '<td>' . htmlspecialchars($row['venue']) . '</td>';
+            echo '<td>' . htmlspecialchars(date('Y-m-d H:i', strtotime($row['event_date']))) . '</td>';
+            echo '<td>Rs. ' . htmlspecialchars($row['price']) . '</td>';
+            echo '</tr>';
+        }
+        echo '</table>';
+        echo '<br><button type="submit" class="button-exploreevents">Confirm Booking</button>';
+        echo '</form>';
+    } else {
+        echo '<div style="text-align:center;color:red;">Could not fetch event details.</div>';
+    }
+}
+
+echo '<br><div style="text-align: center;"><a href="index.php"><button class="button-backtohome">Back to Home</button></a></div>';
 include 'footer.php';
 ?>

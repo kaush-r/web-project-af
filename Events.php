@@ -41,7 +41,9 @@
                 </div>
             </li>
         </ul>
-        <button id="book-now-btn" style="display:none; margin-top: 25px;" class="button-exploreevents">Book Now</button>
+        <a href="booking.php">
+            <button id="book-now-btn" style="display:none; margin-top: 25px;" class="button-exploreevents">Book Now</button>
+        </a>
     </div>
 </div>
 <?php include 'footer.php'; ?>

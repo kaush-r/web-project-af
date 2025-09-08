@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include 'includes/header.php'; include 'includes/db_connect.php'; ?>
     <br>
     <div style="display: flex; flex-direction: column; align-items: center; min-height: 70vh;">
         <div class="card" style="margin-top:40px; text-align:center;">
@@ -13,4 +13,4 @@
             Created by Web Group AF
         </div>
     </div>
-    <?php include 'footer.php'; ?>
+    <?php include 'includes/footer.php'; ?>

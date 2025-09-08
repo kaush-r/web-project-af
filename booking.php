@@ -6,8 +6,8 @@ if (session_status() === PHP_SESSION_NONE) {
 
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 $pageTitle = 'Booking';
-include 'header.php';
-include 'db_connect.php';
+include 'includes/header.php';
+include 'includes/db_connect.php';
 
 // Get selected event IDs from session (set from Events page)
 $selected_events = isset($_SESSION['selected_events']) ? $_SESSION['selected_events'] : [];
@@ -18,11 +18,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $user_id && !empty($selected_events
     foreach ($selected_events as $event_id) {
         $seats = isset($_POST['seats'][$event_id]) ? intval($_POST['seats'][$event_id]) : 1;
         $booking_date = date('Y-m-d H:i:s');
-        $sql = "INSERT INTO bookings (user_id, event_id, booking_date, seats) VALUES (?, ?, ?, ?)";
+        // Generate booking number: AUDxxxxxx (auto-increment id padded to 6 digits)
+        // First, insert without booking_number to get the id
+        $sql = "INSERT INTO bookings (user_id, event_id, booking_date, seats, booking_number) VALUES (?, ?, ?, ?, '')";
         $stmt = mysqli_prepare($connection, $sql);
         if ($stmt) {
             mysqli_stmt_bind_param($stmt, 'iisi', $user_id, $event_id, $booking_date, $seats);
-            if (!mysqli_stmt_execute($stmt)) {
+            if (mysqli_stmt_execute($stmt)) {
+                $insert_id = mysqli_insert_id($connection);
+                $booking_number = 'AUD' . str_pad($insert_id, 6, '0', STR_PAD_LEFT);
+                // Update booking_number
+                $update_sql = "UPDATE bookings SET booking_number=? WHERE id=?";
+                $update_stmt = mysqli_prepare($connection, $update_sql);
+                if ($update_stmt) {
+                    mysqli_stmt_bind_param($update_stmt, 'si', $booking_number, $insert_id);
+                    mysqli_stmt_execute($update_stmt);
+                    mysqli_stmt_close($update_stmt);
+                }
+            } else {
                 $success = false;
             }
             mysqli_stmt_close($stmt);
@@ -41,7 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $user_id && !empty($selected_events
 echo '<br><h1 style="text-align: center; color: #FFD700;">Booking Page</h1>';
 
 if (!$user_id) {
-    echo '<div style="text-align:center;color:red;">You must be logged in to book events.</div>';
+    echo '<div style="text-align:center;color:red;">Please log in to book events.</div><br>';
+    echo '<div style="text-align: center;"><a href="login.php"><button class="button-backtohome">Go to Login</button></a></div>';
 } elseif (empty($selected_events)) {
     echo '<div style="text-align:center;color:orange;">No events selected for booking.</div>';
 } else {
@@ -71,5 +85,5 @@ if (!$user_id) {
 }
 
 echo '<br><div style="text-align: center;"><a href="index.php"><button class="button-backtohome">Back to Home</button></a></div>';
-include 'footer.php';
+include 'includes/footer.php';
 ?>

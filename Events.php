@@ -1,4 +1,4 @@
-<?php $pageTitle = 'Events'; include 'header.php'; ?>
+<?php $pageTitle = 'Events'; include 'includes/header.php'; include 'includes/db_connect.php'; ?>
 <br>
 <h1 style="text-align: center; color: #FFD700;">Events Page</h1>
 <p style="text-align: center; color: white;">Discover upcoming events and activities happening around you.</p>
@@ -46,4 +46,4 @@
         </a>
     </div>
 </div>
-<?php include 'footer.php'; ?>
+<?php include 'includes/footer.php'; ?>

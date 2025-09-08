@@ -1,4 +1,4 @@
-<?php $pageTitle = 'Home'; include 'header.php'; ?>
+<?php $pageTitle = 'Home'; include 'includes/header.php'; include 'includes/db_connect.php'; ?>
 <br>
 <h1 style="text-align: center; color: #FFD700;">Welcome to Event Watch</h1>
 <p style="text-align: center; color: white;">Your go-to platform for discovering and tracking events around you.</p>
@@ -31,4 +31,4 @@
         </button>
     </a>
 </div>
-<?php include 'footer.php'; ?>
+<?php include 'includes/footer.php'; ?>

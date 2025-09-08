@@ -1,4 +1,4 @@
-<?php $pageTitle = 'Login'; include 'header.php'; ?>
+<?php $pageTitle = 'Login'; include 'includes/header.php'; include 'includes/db_connect.php'; ?>
 <br>
 <div style="display: flex; justify-content: center; align-items: center; min-height: 70vh;">
     <div class="card" id="login-card">
@@ -19,4 +19,4 @@
 <div id="login-bottom-link">
     <span style="color: aliceblue;">Don't have an account? <a href="signup.php">Sign up</a></span>
 </div>
-<?php include 'footer.php'; ?>
+<?php include 'includes/footer.php'; ?>

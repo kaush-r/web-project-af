@@ -1,4 +1,4 @@
-<?php $pageTitle = 'Sign Up'; include 'header.php'; ?>
+<?php $pageTitle = 'Sign Up'; include 'includes/header.php'; include 'includes/db_connect.php'; ?>
 <br>
 <div style="display: flex; justify-content: center; align-items: center; min-height: 70vh;">
     <div class="card" id="signup-card">
@@ -23,4 +23,4 @@
         </form>
     </div>
 </div>
-<?php include 'footer.php'; ?>
+<?php include 'includes/footer.php'; ?>

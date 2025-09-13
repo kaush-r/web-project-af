@@ -402,17 +402,25 @@ a {
   max-width: 600px;
   border: 2px solid #FFD700;
   color: #FFD700;
+  /* align in the center of the page */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.form-container h2 {
-  margin-bottom: 20px;
-  font-size: 22px;
-  color: #FFD700;
-  text-align: center;
-  letter-spacing: 1px;
-}
-
-.message {
+.form-container {
+    background: #232323;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    padding: 32px 24px;
+    max-width: 480px;
+    margin: auto;
+    color: #FFD700;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
   padding: 12px;
   border-radius: 8px;
   margin-bottom: 15px;
